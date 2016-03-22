@@ -329,6 +329,10 @@ uis.controller('uiSelectCtrl',
         if ($event && $event.type === 'click') {
           ctrl.clickTriggeredSelect = true;
         }
+
+        if (ctrl.resetSearchInput) {
+          _resetSearchInput();
+        }
       }
     }
   };
