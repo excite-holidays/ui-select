@@ -85,13 +85,14 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
       });
       focusser.bind("keydown", function(e){
 
-        if (e.which === KEY.BACKSPACE) {
-          e.preventDefault();
-          e.stopPropagation();
-          $select.select(undefined);
-          scope.$apply();
-          return;
-        }
+        // Ben: prevent backspace button
+        // if (e.which === KEY.BACKSPACE) {
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        //   $select.select(undefined);
+        //   scope.$apply();
+        //   return;
+        // }
 
         if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC) {
           return;
