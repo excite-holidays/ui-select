@@ -177,7 +177,8 @@ uis.directive('uiSelect',
             } else {
               skipFocusser = true;
             }
-            $select.close(skipFocusser);
+            // $select.close(skipFocusser);
+            $select.close(true); // Ben: force skip focusser
             scope.$digest();
           }
           $select.clickTriggeredSelect = false;

@@ -85,7 +85,7 @@ uis.controller('uiSelectCtrl',
     if (ctrl.resetSearchInput || (ctrl.resetSearchInput === undefined && uiSelectConfig.resetSearchInput)) {
       ctrl.search = EMPTY_SEARCH;
       //reset activeIndex
-      if (ctrl.selected && ctrl.items.length && !ctrl.multiple) {
+      if (ctrl.selected !== undefined && ctrl.selected !== null && ctrl.items.length && !ctrl.multiple) {
         ctrl.activeIndex = _findIndex(ctrl.items, function(item){
           return angular.equals(this, item);
         }, ctrl.selected);
@@ -129,13 +129,13 @@ uis.controller('uiSelectCtrl',
             // Only focus input after the animation has finished
             $timeout(function () {
               ctrl.focusSearchInput(initSearchValue);
-            });
+            }, 100);
           }
         });
       } else {
         $timeout(function () {
           ctrl.focusSearchInput(initSearchValue);
-        });
+        }, 100);
       }
     }
   };
@@ -379,6 +379,10 @@ uis.controller('uiSelectCtrl',
         }
         if ($event && $event.type === 'click') {
           ctrl.clickTriggeredSelect = true;
+        }
+
+        if (ctrl.resetSearchInput) {
+          _resetSearchInput();
         }
       }
     }

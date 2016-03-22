@@ -45,7 +45,7 @@ uis.directive('uiSelectChoices',
         }
 
         choices.attr('ng-repeat', $select.parserResult.repeatExpression(groupByExp))
-            .attr('ng-if', '$select.open'); //Prevent unnecessary watches when dropdown is closed
+            // .attr('ng-if', '$select.open'); //Prevent unnecessary watches when dropdown is closed
         if ($window.document.addEventListener) {  //crude way to exclude IE8, specifically, which also cannot capture events
           choices.attr('ng-mouseenter', '$select.setActiveItem('+$select.parserResult.itemName +')')
               .attr('ng-click', '$select.select(' + $select.parserResult.itemName + ',$select.skipFocusser,$event)');
