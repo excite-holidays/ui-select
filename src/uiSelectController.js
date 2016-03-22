@@ -97,7 +97,7 @@ uis.controller('uiSelectCtrl',
         if(!ctrl.tagging.isActivated && ctrl.items.length > 1) {
           _ensureHighlightVisible();
         }
-      });
+      }, 100);
     }
   };
 
