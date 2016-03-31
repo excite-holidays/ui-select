@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/excite-holidays/ui-select
- * Version: 1.0.0 - 2016-03-22T03:59:39.077Z
+ * Version: 1.0.0 - 2016-03-31T03:19:23.545Z
  * License: MIT
  */
 
@@ -1378,7 +1378,8 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
       //$select.selected = raw selected objects (ignoring any property binding)
 
       $select.multiple = true;
-      $select.removeSelected = true;
+      // $select.removeSelected = true;
+      $select.removeSelected = false; // Ben: don't exclude selected items
 
       //Input that will handle focus
       $select.focusInput = $select.searchInput;
