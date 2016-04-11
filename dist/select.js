@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/excite-holidays/ui-select
- * Version: 1.0.0 - 2016-03-31T03:19:23.545Z
+ * Version: 1.0.0 - 2016-04-11T09:35:15.379Z
  * License: MIT
  */
 
@@ -384,7 +384,8 @@ uis.controller('uiSelectCtrl',
 
       var container = $element.querySelectorAll('.ui-select-choices-content');
       if (ctrl.$animate && ctrl.$animate.on && ctrl.$animate.enabled(container[0])) {
-        ctrl.$animate.on('enter', container[0], function (elem, phase) {
+        // ctrl.$animate.on('enter', container[0], function (elem, phase) {
+        ctrl.$animate.on('addClass', container[0], function (elem, phase) {
           if (phase === 'close') {
             // Only focus input after the animation has finished
             $timeout(function () {
