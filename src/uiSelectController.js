@@ -125,24 +125,27 @@ uis.controller('uiSelectCtrl',
       var container = $element.querySelectorAll('.ui-select-choices-content');
       if (ctrl.$animate && ctrl.$animate.on && ctrl.$animate.enabled(container[0])) {
         // ctrl.$animate.on('enter', container[0], function (elem, phase) {
-        ctrl.$animate.on('addClass', container[0], function (elem, phase) {
+        ctrl.$animate.on('addClass', container[0], function (elem, phase) { // use addClass because we changed ui-select-choices to be display by ng-show
           if (phase === 'close') {
             // Only focus input after the animation has finished
-            $timeout(function () {
-              ctrl.focusSearchInput(initSearchValue);
-            }, 100);
+            focus()
           }
         });
       } else {
-        $timeout(function () {
-          ctrl.focusSearchInput(initSearchValue);
-        }, 100);
+        focus()
       }
+    }
+
+    function focus() {
+      $timeout(function () {
+        // ctrl.focusSearchInput(initSearchValue);
+        ctrl.focusSearchInput(); // we already set search keyword from 'on input' event on focusser element
+      }, 100);
     }
   };
 
   ctrl.focusSearchInput = function (initSearchValue) {
-    ctrl.search = initSearchValue || ctrl.search;
+    // ctrl.search = initSearchValue || ctrl.search; // Ben: don't change the keyword, it will cause a problem when user start typing from focus state
     ctrl.searchInput[0].focus();
     if(!ctrl.tagging.isActivated && ctrl.items.length > 1) {
      _ensureHighlightVisible();
