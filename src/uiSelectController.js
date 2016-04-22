@@ -114,6 +114,10 @@ uis.controller('uiSelectCtrl',
 
       ctrl.open = true;
 
+      if (initSearchValue) {
+        ctrl.search = initSearchValue;
+      }
+
       ctrl.activeIndex = ctrl.activeIndex >= ctrl.items.length ? 0 : ctrl.activeIndex;
 
       // ensure that the index is set to zero for tagging variants
@@ -139,7 +143,7 @@ uis.controller('uiSelectCtrl',
     function focus() {
       $timeout(function () {
         // ctrl.focusSearchInput(initSearchValue);
-        ctrl.focusSearchInput(); // we already set search keyword from 'on input' event on focusser element
+        ctrl.focusSearchInput(); // No need to pass initSearchValue because we already set search keyword from ctrl.activate()
       }, 100);
     }
   };
