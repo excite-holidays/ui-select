@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/excite-holidays/ui-select
- * Version: 1.0.0-r1 - 2016-06-10T06:35:54.132Z
+ * Version: 1.0.0-r2 - 2016-06-10T06:37:28.031Z
  * License: MIT
  */
 
