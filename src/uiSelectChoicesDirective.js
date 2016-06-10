@@ -26,6 +26,12 @@ uis.directive('uiSelectChoices',
         var groupByExp = attrs.groupBy;
         var groupFilterExp = attrs.groupFilter;
 
+        var Ps = require('perfect-scrollbar');
+        Ps.initialize(element[0], {
+          minScrollbarLength: 30,
+          suppressScrollX: true
+        });
+
         $select.parseRepeatAttr(attrs.repeat, groupByExp, groupFilterExp); //Result ready at $select.parserResult
 
         $select.disableChoiceExpression = attrs.uiDisableChoice;

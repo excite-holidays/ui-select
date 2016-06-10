@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/excite-holidays/ui-select
- * Version: 1.0.0 - 2016-05-20T03:43:53.843Z
+ * Version: 1.0.0-r1 - 2016-06-10T06:35:54.132Z
  * License: MIT
  */
 
@@ -203,6 +203,12 @@ uis.directive('uiSelectChoices',
         var groupByExp = attrs.groupBy;
         var groupFilterExp = attrs.groupFilter;
 
+        var Ps = require('perfect-scrollbar');
+        Ps.initialize(element[0], {
+          minScrollbarLength: 30,
+          suppressScrollX: true
+        });
+
         $select.parseRepeatAttr(attrs.repeat, groupByExp, groupFilterExp); //Result ready at $select.parserResult
 
         $select.disableChoiceExpression = attrs.uiDisableChoice;
@@ -267,6 +273,8 @@ uis.directive('uiSelectChoices',
 uis.controller('uiSelectCtrl',
   ['$scope', '$element', '$timeout', '$filter', 'uisRepeatParser', 'uiSelectMinErr', 'uiSelectConfig', '$parse', '$injector',
   function($scope, $element, $timeout, $filter, RepeatParser, uiSelectMinErr, uiSelectConfig, $parse, $injector) {
+
+  var Ps = require('perfect-scrollbar');
 
   var ctrl = this;
 
@@ -404,6 +412,7 @@ uis.controller('uiSelectCtrl',
       $timeout(function () {
         // ctrl.focusSearchInput(initSearchValue);
         ctrl.focusSearchInput(); // No need to pass initSearchValue because we already set search keyword from ctrl.activate()
+        Ps.update($element.find('.ui-select-choices')[0]);
       }, 100);
     }
   };
@@ -522,6 +531,9 @@ uis.controller('uiSelectCtrl',
           ctrl.ngModel.$modelValue = null; //Force scope model value and ngModel value to be out of sync to re-run formatters
         }
       }
+      $timeout(function() {
+        Ps.update($element.find('.ui-select-choices')[0]);
+      });
     });
 
   };

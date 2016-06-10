@@ -8,6 +8,8 @@ uis.controller('uiSelectCtrl',
   ['$scope', '$element', '$timeout', '$filter', 'uisRepeatParser', 'uiSelectMinErr', 'uiSelectConfig', '$parse', '$injector',
   function($scope, $element, $timeout, $filter, RepeatParser, uiSelectMinErr, uiSelectConfig, $parse, $injector) {
 
+  var Ps = require('perfect-scrollbar');
+
   var ctrl = this;
 
   var EMPTY_SEARCH = '';
@@ -144,6 +146,7 @@ uis.controller('uiSelectCtrl',
       $timeout(function () {
         // ctrl.focusSearchInput(initSearchValue);
         ctrl.focusSearchInput(); // No need to pass initSearchValue because we already set search keyword from ctrl.activate()
+        Ps.update($element.find('.ui-select-choices')[0]);
       }, 100);
     }
   };
@@ -262,6 +265,9 @@ uis.controller('uiSelectCtrl',
           ctrl.ngModel.$modelValue = null; //Force scope model value and ngModel value to be out of sync to re-run formatters
         }
       }
+      $timeout(function() {
+        Ps.update($element.find('.ui-select-choices')[0]);
+      });
     });
 
   };
