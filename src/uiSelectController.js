@@ -128,18 +128,19 @@ uis.controller('uiSelectCtrl',
         ctrl.activeIndex = 0;
       }
 
-      var container = $element.querySelectorAll('.ui-select-choices-content');
-      if (ctrl.$animate && ctrl.$animate.on && ctrl.$animate.enabled(container[0])) {
-        // ctrl.$animate.on('enter', container[0], function (elem, phase) {
-        ctrl.$animate.on('addClass', container[0], function (elem, phase) { // use addClass because we changed ui-select-choices to be display by ng-show
-          if (phase === 'close') {
-            // Only focus input after the animation has finished
-            focus()
-          }
-        });
-      } else {
-        focus()
-      }
+      focus(); // Ben: Force focus
+      // var container = $element.querySelectorAll('.ui-select-choices-content');
+      // if (ctrl.$animate && ctrl.$animate.on && ctrl.$animate.enabled(container[0])) {
+      //   // ctrl.$animate.on('enter', container[0], function (elem, phase) {
+      //   ctrl.$animate.on('addClass', container[0], function (elem, phase) { // use addClass because we changed ui-select-choices to be display by ng-show
+      //     if (phase === 'close') {
+      //       // Only focus input after the animation has finished
+      //       focus()
+      //     }
+      //   });
+      // } else {
+      //   focus()
+      // }
     }
 
     function focus() {
