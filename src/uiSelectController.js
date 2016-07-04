@@ -88,9 +88,13 @@ uis.controller('uiSelectCtrl',
       ctrl.search = EMPTY_SEARCH;
       //reset activeIndex
       if (ctrl.selected !== undefined && ctrl.selected !== null && ctrl.items.length && !ctrl.multiple) {
-        ctrl.activeIndex = _findIndex(ctrl.items, function(item){
-          return angular.equals(this, item);
-        }, ctrl.selected);
+        // ctrl.activeIndex = _findIndex(ctrl.items, function(item){
+        //   return angular.equals(this, item);
+        // }, ctrl.selected);
+        var findIndex = require('lodash.findindex');
+        ctrl.activeIndex = findIndex(ctrl.items, function(item){
+          return angular.equals(ctrl.selected, item);
+        });
       }
     }
   }
