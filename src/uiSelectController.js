@@ -91,10 +91,12 @@ uis.controller('uiSelectCtrl',
         // ctrl.activeIndex = _findIndex(ctrl.items, function(item){
         //   return angular.equals(this, item);
         // }, ctrl.selected);
-        var findIndex = require('lodash.findindex');
-        ctrl.activeIndex = findIndex(ctrl.items, function(item){
-          return angular.equals(ctrl.selected, item);
-        });
+
+        // var findIndex = require('lodash.findindex');
+        // ctrl.activeIndex = findIndex(ctrl.items, function(item){
+        //   return angular.equals(ctrl.selected, item);
+        // });
+        ctrl.activeIndex = ctrl.items.indexOf(ctrl.selected);
       }
     }
   }

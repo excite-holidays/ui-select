@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/excite-holidays/ui-select
- * Version: 1.0.0-r8 - 2016-10-20T11:23:05.660Z
+ * Version: 1.0.0-r9 - 2016-11-03T05:07:01.876Z
  * License: MIT
  */
 
@@ -357,10 +357,12 @@ uis.controller('uiSelectCtrl',
         // ctrl.activeIndex = _findIndex(ctrl.items, function(item){
         //   return angular.equals(this, item);
         // }, ctrl.selected);
-        var findIndex = require('lodash.findindex');
-        ctrl.activeIndex = findIndex(ctrl.items, function(item){
-          return angular.equals(ctrl.selected, item);
-        });
+
+        // var findIndex = require('lodash.findindex');
+        // ctrl.activeIndex = findIndex(ctrl.items, function(item){
+        //   return angular.equals(ctrl.selected, item);
+        // });
+        ctrl.activeIndex = ctrl.items.indexOf(ctrl.selected);
       }
     }
   }
